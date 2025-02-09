@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
             sessionStorage.clear(); // Clear session storage
 
             // Clear browser history and redirect to homepage
-            window.location.href = '/homepage.html';
-            window.location.replace('/homepage.html'); // Replace the current history entry
+            window.location.href = '/index.html';
+            window.location.replace('/index.html'); // Replace the current history entry
         } else {
             alert('Logout failed');
         }
