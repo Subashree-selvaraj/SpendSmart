@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchIncomeData() {
         try {
-            const response = await fetch('/incomes');
+            const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
             const data = await response.json();
             totalIncome = data.reduce((sum, income) => sum + income.amount, 0);
             updateBalance();
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchExpenseData() {
         try {
-            const response = await fetch('/expenses');
+            const response = await fetch('https://spendsmart-sugk.onrender.com/expenses');
             const data = await response.json();
             totalExpense = data.reduce((sum, expense) => sum + expense.amount, 0);
             updateBalance();
