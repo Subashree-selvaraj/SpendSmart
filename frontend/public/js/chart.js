@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fetch data based on type (income/expense) and timeframe (daily/weekly/monthly)
     async function fetchData(type) {
         try {
-            const response = await fetch(`/${type}?timeframe=${selectedTimeframe}`);
+            const response = await fetch(`https://spendsmart-sugk.onrender.com/${type}?timeframe=${selectedTimeframe}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
