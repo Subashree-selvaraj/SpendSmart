@@ -80,16 +80,13 @@ function updateDashboard() {
             }
         });
     }
-   
+    fetchIncomeData();
+    fetchExpenseData();
     
 // Fetch saved income data
 async function fetchIncomeData() {
-    try{
-         const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
-        
-         method: 'GET',
-         credentials: 'include',  // Include session cookies
-         const data = await response.json();
+    const response = await fetch('/incomes');
+    const data = await response.json();
     if (response.ok) {
         incomes = data;
         totalIncome = incomes.reduce((sum, income) => sum + income.amount, 0);
@@ -98,20 +95,12 @@ async function fetchIncomeData() {
     } else {
         alert('Failed to fetch income data');
     }
-        
-    } catch (error) {
-        console.error("Failed to fetch expense data:", error.message);
-    }
-   
-    
 }
-
 
  
 // Fetch saved expense data
 async function fetchExpenseData() {
-    const response = await fetch('https://spendsmart-sugk.onrender.com/expenses');
-    
+    const response = await fetch('/expenses');
     const data = await response.json();
     if (response.ok) {
         expenses = data;
@@ -124,8 +113,7 @@ async function fetchExpenseData() {
     }
 }
 
- fetchIncomeData();
- fetchExpenseData();
+
 function updateTotalExpense() {
     const totalExpense = expenses.reduce((sum, expense) => sum + expense.amount, 0);
     totalExpenseElement.textContent = `₹${totalExpense.toFixed(2)}`;
@@ -215,7 +203,7 @@ function updateExpenseList(expenses) {
             sessionStorage.setItem('scrollPosition', window.scrollY);
             sessionStorage.setItem('activeContentId', 'income-content'); // Assuming 'income-content' is the ID of the income page content
 
-            const response = await fetch('https://spendsmart-sugk.onrender.com/add-income', {
+            const response = await fetch('/add-income', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -273,7 +261,7 @@ function updateExpenseList(expenses) {
             sessionStorage.setItem('scrollPosition', window.scrollY);
             sessionStorage.setItem('activeContentId', 'expenses-content');
 
-            const response = await fetch('https://spendsmart-sugk.onrender.com/add-expense', {
+            const response = await fetch('/add-expense', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ description, date, amount, category }),
