@@ -85,8 +85,11 @@ function updateDashboard() {
     
 // Fetch saved income data
 async function fetchIncomeData() {
-    const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
-    const data = await response.json();
+    try{
+         const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
+         method: 'GET',
+         credentials: 'include',  // Include session cookies
+         const data = await response.json();
     if (response.ok) {
         incomes = data;
         totalIncome = incomes.reduce((sum, income) => sum + income.amount, 0);
@@ -95,7 +98,32 @@ async function fetchIncomeData() {
     } else {
         alert('Failed to fetch income data');
     }
+        
+    } catch (error) {
+        console.error("Failed to fetch expense data:", error.message);
+    }
+   
+    
 }
+async function fetchExpenseData() {
+    try {
+        const response = await fetch('https://spendsmart-sugk.onrender.com/expenses', {
+            method: 'GET',
+            credentials: 'include',  // Include session cookies
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Expense Data:", data);
+        return data;
+    } catch (error) {
+        console.error("Failed to fetch expense data:", error.message);
+    }
+}
+
 
  
 // Fetch saved expense data
