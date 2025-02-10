@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fetch data for income categories
     async function fetchIncomeData() {
         try {
-            const response = await fetch('/incomes');
+            const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
             if (!response.ok) {
                 throw new Error('Failed to fetch income data');
             }
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fetch data for expense categories
     async function fetchExpenseData() {
         try {
-            const response = await fetch('/expenses');
+            const response = await fetch('https://spendsmart-sugk.onrender.com/expenses');
             if (!response.ok) {
                 throw new Error('Failed to fetch expense data');
             }
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const response = await fetch('/add-expense', {
+            const response = await fetch('https://spendsmart-sugk.onrender.com/add-expense', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ description, date, amount, category }),
