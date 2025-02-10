@@ -1,3 +1,39 @@
+// Your existing code...
+
+async function fetchIncomeData() {
+    try {
+        const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
+        const data = await response.json();
+        if (response.ok) {
+            incomes = data;
+            totalIncome = incomes.reduce((sum, income) => sum + income.amount, 0);
+            updateTotalIncome(); // Ensure this is called to update the total income
+            updateIncomeList(incomes); // Ensure this is called to update the income list
+        } else {
+            alert('Failed to fetch income data');
+        }
+    } catch (error) {
+        console.error('Error fetching income data:', error);
+    }
+}
+
+async function fetchExpenseData() {
+    try {
+        const response = await fetch('https://spendsmart-sugk.onrender.com/expenses');
+        const data = await response.json();
+        if (response.ok) {
+            expenses = data;
+            totalExpense = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+            updateTotalExpense();
+            updateExpenseList(expenses);
+        } else {
+            console.error('Failed to fetch expense data');
+        }
+    } catch (error) {
+        console.error('Error fetching expense data:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signupForm');
     const loginForm = document.getElementById('loginForm');
