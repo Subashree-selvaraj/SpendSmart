@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Check authentication status
-    fetch('/check-auth')
+    fetch('https://spendsmart-sugk.onrender.com/check-auth')
         .then(response => response.json())
         .then(data => {
             if (!data.authenticated) {
