@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Check authentication status
-    fetch('/check-auth')
+    fetch('https://spendsmart-sugk.onrender.com/check-auth')
         .then(response => response.json())
         .then(data => {
             if (!data.authenticated) {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Attach logout function to logout button
     const logoutMenuItem = document.getElementById('logout-menu');
     logoutMenuItem.addEventListener('click', async () => {
-        const response = await fetch('/logout', {
+        const response = await fetch('https://spendsmart-sugk.onrender.com/logout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
         });
