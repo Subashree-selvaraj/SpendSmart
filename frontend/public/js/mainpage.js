@@ -86,7 +86,7 @@ function updateDashboard() {
 async function fetchIncomeData() {
     try{
          const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
-        console.log(await response.text()); 
+        
          method: 'GET',
          credentials: 'include',  // Include session cookies
          const data = await response.json();
@@ -111,7 +111,7 @@ async function fetchIncomeData() {
 // Fetch saved expense data
 async function fetchExpenseData() {
     const response = await fetch('https://spendsmart-sugk.onrender.com/expenses');
-    console.log(await response.text()); 
+    
     const data = await response.json();
     if (response.ok) {
         expenses = data;
