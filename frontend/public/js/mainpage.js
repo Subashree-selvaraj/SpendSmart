@@ -86,7 +86,7 @@ function updateDashboard() {
 // Fetch saved income data
 
 async function fetchIncomeData() {
-    const response = await fetch('https://thespendsmart.netlify.app/incomes', {
+    const response = await fetch('/incomes', {
         credentials: 'include'
     });
     const data = await response.json();
