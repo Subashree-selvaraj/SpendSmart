@@ -219,6 +219,7 @@ function updateExpenseList(expenses) {
                 headers: { 
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ description, date, amount, category }),
             });
 
@@ -275,6 +276,7 @@ function updateExpenseList(expenses) {
             const response = await fetch('https://spendsmart-sugk.onrender.com/add-expense', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
                 body: JSON.stringify({ description, date, amount, category }),
             });
             const data = await response.json();
