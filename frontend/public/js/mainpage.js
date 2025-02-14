@@ -86,7 +86,7 @@ function updateDashboard() {
 // Fetch saved income data
 
 async function fetchIncomeData() {
-    const response = await fetch('https://spendsmart-sugk.onrender.com/incomes', {
+    const response = await fetch('https://thespendsmart.netlify.app/mainpage.html/incomes', {
         method: 'GET',
         credentials: 'include', // Include cookies with the request
         headers: {
