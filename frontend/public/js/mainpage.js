@@ -203,7 +203,7 @@ function updateExpenseList(expenses) {
             sessionStorage.setItem('scrollPosition', window.scrollY);
             sessionStorage.setItem('activeContentId', 'income-content'); // Assuming 'income-content' is the ID of the income page content
 
-            const response = await fetch('/add-income', {
+            const response = await fetch('https://spendsmart-sugk.onrender.com/add-income', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
