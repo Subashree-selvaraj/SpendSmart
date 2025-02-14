@@ -272,7 +272,7 @@ function updateExpenseList(expenses) {
             sessionStorage.setItem('scrollPosition', window.scrollY);
             sessionStorage.setItem('activeContentId', 'expenses-content');
 
-            const response = await fetch('/add-expense', {
+            const response = await fetch('https://spendsmart-sugk.onrender.com/add-expense', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ description, date, amount, category }),
