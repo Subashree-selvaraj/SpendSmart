@@ -1,7 +1,11 @@
-// ...existing code...
+
 async function fetchIncomeData() {
     const response = await fetch('https://spendsmart-sugk.onrender.com/incomes', {
-        credentials: 'include'
+        method: 'GET',
+        credentials: 'include', // Include cookies with the request
+        headers: {
+            'Content-Type': 'application/json'
+        }
     });
     const data = await response.json();
     if (response.ok) {
@@ -16,7 +20,11 @@ async function fetchIncomeData() {
 
 async function fetchExpenseData() {
     const response = await fetch('https://spendsmart-sugk.onrender.com/expenses', {
-        credentials: 'include'
+        method: 'GET',
+        credentials: 'include', // Include cookies with the request
+        headers: {
+            'Content-Type': 'application/json'
+        }
     });
     const data = await response.json();
     if (response.ok) {
@@ -28,7 +36,7 @@ async function fetchExpenseData() {
         console.error('Failed to fetch expense data');
     }
 }
-// ...existing code...
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signupForm');
