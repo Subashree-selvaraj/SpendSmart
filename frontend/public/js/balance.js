@@ -3,27 +3,33 @@ document.addEventListener('DOMContentLoaded', function() {
     let totalIncome = 0;
     let totalExpense = 0;
 
-    async function fetchIncomeData() {
-        try {
-            const response = await fetch('https://spendsmart-sugk.onrender.com/incomes');
-            const data = await response.json();
-            totalIncome = data.reduce((sum, income) => sum + income.amount, 0);
-            updateBalance();
-        } catch (error) {
-            console.error('Error fetching income data:', error);
-        }
+   
+async function fetchIncomeData() {
+    try {
+        const response = await fetch('https://spendsmart-sugk.onrender.com/incomes', {
+            credentials: 'include'
+        });
+        const data = await response.json();
+        totalIncome = data.reduce((sum, income) => sum + income.amount, 0);
+        updateBalance();
+    } catch (error) {
+        console.error('Error fetching income data:', error);
     }
+}
 
-    async function fetchExpenseData() {
-        try {
-            const response = await fetch('https://spendsmart-sugk.onrender.com/expenses');
-            const data = await response.json();
-            totalExpense = data.reduce((sum, expense) => sum + expense.amount, 0);
-            updateBalance();
-        } catch (error) {
-            console.error('Error fetching expense data:', error);
-        }
+async function fetchExpenseData() {
+    try {
+        const response = await fetch('https://spendsmart-sugk.onrender.com/expenses', {
+            credentials: 'include'
+        });
+        const data = await response.json();
+        totalExpense = data.reduce((sum, expense) => sum + expense.amount, 0);
+        updateBalance();
+    } catch (error) {
+        console.error('Error fetching expense data:', error);
     }
+}
+
 
     function updateBalance() {
         const balance = totalIncome - totalExpense;
