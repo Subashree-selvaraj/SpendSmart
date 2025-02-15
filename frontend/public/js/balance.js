@@ -10,7 +10,11 @@ async function fetchIncomeData() {
             credentials: 'include'
         });
         const data = await response.json();
-        totalIncome = data.reduce((sum, income) => sum + income.amount, 0);
+        if (Array.isArray(data)) {
+            totalIncome = data.reduce((sum, income) => sum + income.amount, 0);
+        } else {
+            console.error('Expected an array but got:', data);
+        }
         updateBalance();
     } catch (error) {
         console.error('Error fetching income data:', error);
