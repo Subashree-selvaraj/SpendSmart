@@ -271,6 +271,17 @@
       </body>
       <script src="/public/js/chatbot.js"></script>
       <script src="/public/js/logout.js"></script>
+    <script>
+fetch('https://spendsmart-sugk.onrender.com/check-auth', {
+    mode: 'no-cors'
+})
+.then(response => {
+    // Handle the response
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+</script>
 </body>
 
 </html>
